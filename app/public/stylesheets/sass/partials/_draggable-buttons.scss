@@ -1,0 +1,16 @@
+// INSPIRED FROM http://tympanus.net/Development/CreativeButtons/
+
+.container-buttons {
+  @include flex(1);
+  @include align-self(center);
+
+  .wrapper {
+    @include display(flex);
+    @include flex-direction(column);
+    @include justify-content(flex-start);
+
+    button.lang-btn {
+      @include flex(1);
+    }
+  }
+}

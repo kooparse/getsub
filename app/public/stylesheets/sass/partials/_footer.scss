@@ -1,0 +1,49 @@
+footer {
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(center);
+
+  .social-group {
+    @include flex(1);
+    @include align-self(flex-end);
+    margin-bottom: 10px;
+    max-width: 130px;
+
+    .icon {
+      font-size: 2em;
+      float:left;
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+
+    .twitter {
+      color: $twitter;
+    }
+
+    .github {
+      color: $github;
+    }
+
+    .email {
+      color: $email;
+    }
+
+    .clearfix {
+      @include clearfix;
+    }
+
+    .count {
+      text-align: center;
+      color: gray;
+      font-style: italic;
+      margin-top: 5px;
+      span.second {
+        font-size: .8em;
+      }
+      span.first {
+        font-size: .9em;
+        color: $in-zone;
+      }
+    }
+  }
+}

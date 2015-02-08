@@ -1,0 +1,7 @@
+.git
+.DS_Store
+bundle.js
+node_modules
+build
+app/public/stylesheets/main.css
+.env

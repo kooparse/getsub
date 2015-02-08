@@ -1,0 +1,49 @@
+// INSPIRED FROM http://codepen.io/WhiteWolfWizard/pen/gsrph
+
+.loader {
+  opacity: 0;
+  position: absolute;
+  top: 53%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100px;
+  height: 39px;
+  @include transform(translateY(-50%));
+  @include transition(opacity 0.5s);
+
+  span {
+    display: inline-block;
+    width: 10px;
+    height: 40px;
+
+    @for $i from 1 through 7 {
+      &.item-#{$i} {
+        background: nth($paint-color, $i);
+      }
+    }
+
+    @include animation-name(scale);
+    @include animation-duration(1.2s);
+    @include animation-iteration-count(infinite);
+  }
+}
+
+.loader.showOrHide {
+ opacity: 1;
+}
+
+@each $i in $items {
+  .#{$i} {
+    @include delay;
+  }
+}
+
+@include keyframes (scale) {
+  0%, 40%, 100%{
+    @include transform(scaleY(0.2));
+  }
+  20%, 60%{
+    @include transform(scaleY(1));
+  }
+}

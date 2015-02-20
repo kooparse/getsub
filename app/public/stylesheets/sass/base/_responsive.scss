@@ -1,0 +1,36 @@
+html {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+    user-select: none;
+}
+
+.resp-h {
+  min-height: 600px;
+}
+
+.resp-w {
+  min-width: 800px;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape),
+only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait),
+only screen and (min-device-width : 768px) and (max-device-width : 1024px),
+only screen and (min-device-width : 320px) and (max-device-width : 480px),
+only screen and (max-width : 320px) {
+
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+  }
+
+}

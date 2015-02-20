@@ -1,0 +1,28 @@
+.panel {
+  height: 210px;
+  width: 100%;
+  bottom: -210px;
+  transition: all 0.3s ease;
+}
+
+.panel.show {
+  bottom: 0px;
+}
+
+.a--panel {
+  flex-basis: 42px;
+  cursor: pointer;
+}
+
+.a--panel.selected {
+  background-color: $blue-flash;
+}
+
+.a--panel:hover {
+  text-decoration: none;
+  background-color: $blue-flash;
+}
+
+.wrapper--panel {
+  height: 210px;
+}

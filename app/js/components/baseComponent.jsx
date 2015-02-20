@@ -1,8 +1,12 @@
 var React               = require('react/addons'),
     CX                  = React.addons.classSet,
-    Dropzone            = require('react-dropzone'),
+
     DraggableComponent  = require('./draggableComponent.jsx'),
-    ButtonComponent     = require('./buttonComponent.jsx'),
+    SmokeComponent      = require('./smokeComponent.jsx'),
+    ModalComponent      = require('./modalComponent.jsx'),
+    MobileComponent     = require('./mobileComponent.jsx'),
+    LoaderComponent     = require('./loaderComponent.jsx'),
+    PanelComponent      = require('./panelComponent.jsx'),
     CounterComponent    = require('./counterComponent.jsx');
 
 
@@ -10,7 +14,7 @@ var React               = require('react/addons'),
 var Component = React.createClass({
 
   getInitialState: function () {
-    return { hide: false, modal: false , loader: false }
+    return { hide: false }
   },
 
   componentWillMount: function () {
@@ -20,38 +24,53 @@ var Component = React.createClass({
   },
 
   onLoading: function () {
-    this.setState({ hide: true, loader: true });
+    this.setState({ hide: true });
+    Event.emit('loader', true);
   },
 
   onLoaded: function () {
-    this.setState({ hide: false, loader: false });
-  },
-
-  onHandleClose: function () {
-    this.setState({ modal: false });
+    this.setState({ hide: false });
+    Event.emit('loader', false);
   },
 
   onHandleFailure: function () {
-    var that = this;
-    this.setState({ modal: true });
-
-    setTimeout(function () {
-      that.setState({ modal: false });
-    }, 5000);
+    Event.emit('modal', true);
   },
 
-  onHandleDrop: function (file) {
-    Event.emit('dropFile', file.name);
+  onHandleDrop: function (e) {
+    var files;
+    if (e.dataTransfer) {
+      files = e.dataTransfer.files;
+    }
+    else if (e.target) {
+      files = e.target.files;
+    }
+
+    this.setState({ hide: false });
+    Event.emit('dropFile', files[0].name);
+
+    e.stopPropagation();
+    e.preventDefault();
   },
 
   onHandleDragOver: function (e) {
-    this.setState({ hide:true });
+    e.dataTransfer.dropEffect = "copy";
+    this.setState({ hide: true });
+
     e.stopPropagation();
     e.preventDefault();
   },
 
   onHandleDragLeave: function (e) {
-    this.setState({ hide:false });
+    this.setState({ hide: false });
+
+    e.stopPropagation();
+    e.preventDefault();
+  },
+
+  handleClick: function (e) {
+    Event.emit('panel', true);
+
     e.stopPropagation();
     e.preventDefault();
   },
@@ -59,91 +78,56 @@ var Component = React.createClass({
   render: function () {
 
     var placeholderClasses = CX({
-      'container-placeholder': true,
-      'hide': this.state.hide
-    });
-
-    var buttonsClasses = CX({
-      'container-buttons': true,
-      'hide': this.state.hide
-    });
-
-    var modalClasses = CX({
-      'modal': true,
-      'modal-show': this.state.modal
-    });
-
-    var loaderClasses = CX({
-      'loader': true,
-      'showOrHide': this.state.loader
+      'flex-1': true,
+      'tr-1'  : true,
+      'hide'  : this.state.hide
     });
 
     return (
-      <div className="container">
-
-        <header>
-          <h3>Getsub!</h3>
-          <p>A better way to find your subtitles</p>
-          <p className="mobile">But not on mobile</p>
-        </header>
-
-        <section className="draggable-zone" onDragOver={this.onHandleDragOver} onDragLeave={this.onHandleDragLeave} onDrop={this.onHandleDragLeave}>
-          <Dropzone handler={this.onHandleDrop}>
-            <div className="content">
-              <div className="draggable-place">
-                <div className={buttonsClasses}>
-                  <ButtonComponent />
-                </div>
-                <div className={placeholderClasses}>
-                  <DraggableComponent />
-                </div>
-                <div className={loaderClasses}>
-                  <span className="item-1"></span>
-                  <span className="item-2"></span>
-                  <span className="item-3"></span>
-                  <span className="item-4"></span>
-                  <span className="item-5"></span>
-                  <span className="item-6"></span>
-                  <span className="item-7"></span>
-                </div>
-              </div>
+      <div className="base resp-w">
+        <div className="flex flex-col resp-h full desktop">
+          <header className="flex flex-col flex-3 center">
+            <div className="flex-1">
+              <h1 className="mt0 mb0 getsub-red">Getsub!</h1>
+              <p className="h2 mt0 mb2 light dark-mid-grey">A better way to find your subtitles</p>
             </div>
-          </Dropzone>
-        </section>
+          </header>
 
-        <div className={modalClasses}>
-          <div className="content">
-              <h3>Subtitle(s) not found!</h3>
-              <div>
-                <img src="public/images/sad.svg" alt="no sub bro"/>
-                <button className="modal-close" onClick={this.onHandleClose}>Close me!</button>
-              </div>
+          <section className="flex flex-align-center flex-just-center flex-2 mxa col-4">
+            <button className="rounded btn-flat dark col-10" onClick={this.handleClick}>Select your language</button>
+          </section>
+
+          <div className="flex flex-7 flex-align-center flex-just-center center mt1 mb3 col-8 mxa dashed sh-inner dark-mid-grey" onDrop={this.onHandleDrop} onDragLeave={this.onHandleDragLeave} onDragOver={this.onHandleDragOver}>
+            <div className={placeholderClasses}>
+              <DraggableComponent />
+            </div>
+            <LoaderComponent />
           </div>
+
+          <footer className="flex flex-col flex-1 center">
+            <div className="flex-1">
+              <a className="getsub-blue m1 h2 text-reset" href="https://twitter.com/aenehc" target="_blank">
+               <i className="ss-twitter" alt="twitter icon"></i>
+              </a>
+              <a className="black m1 h2 text-reset" href="https://github.com/aenehc/getsub" target="_blank">
+                <i className="ss-octocat" alt="github icon"></i>
+              </a>
+              <a className="getsub-red m1 h2 text-reset" href="mailto:alexandre.enehc@gmail.com?subject=Hello">
+                <i className="ss-mail" alt="email icon"></i>
+              </a>
+            </div>
+            <div className="flex-1">
+              <CounterComponent />
+            </div>
+          </footer>
         </div>
-        <div className="modal-window-background"></div>
 
-        <footer>
-          <div className="social-group">
-            <a className="icon twitter" href="https://twitter.com/aenehc" target="_top">
-             <i className="ss-twitter" alt="twitter icon"></i>
-            </a>
-
-            <a className="icon github" href="https://github.com/aenehc/getsub" target="_top">
-              <i className="ss-octocat" alt="github icon"></i>
-            </a>
-
-            <a className="icon email" href="mailto:alexandre.enehc@gmail.com?subject=Hello">
-              <i className="ss-mail" alt="email icon"></i>
-            </a>
-
-            <div className="clearfix"></div>
-            <CounterComponent />
-
-          </div>
-        </footer>
-
+        <ModalComponent />
+        <SmokeComponent />
+        <PanelComponent />
+        <MobileComponent />
       </div>
-    )
+    );
   }
 
 });

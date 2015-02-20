@@ -1,8 +1,0 @@
-.container {
-  @include display(flex);
-  @include flex-flow(row wrap);
-  @include justify-content(center);
-}
-header, section, footer {
-  @include flex(1 100%)
-}

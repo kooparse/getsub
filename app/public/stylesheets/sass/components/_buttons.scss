@@ -1,0 +1,30 @@
+.btn-flat {
+  border: 3px solid;
+  outline: none;
+  padding: 15px 5px;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  font-weight: 700;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+
+.btn-flat.dark {
+  border-color: $dark-grey;
+  color: $dark-grey;
+  background-color: transparent;
+}
+.btn-flat.dark:hover {
+  background-color: $dark-grey;
+  color: $white;
+}
+
+.btn-flat.light {
+  color: $dark-grey;
+  background-color: $white;
+}
+.btn-flat.light:hover {
+  background-color: $white;
+  color: $dark-grey;
+}

@@ -1,23 +1,9 @@
-
-//helpers
-@import "helpers/variables";
-@import "helpers/functions";
-
-//module
-@import "modules/all";
-@import "modules/social-icons";
-
-// base
-@import "base/reset";
-@import "base/grids";
-@import "base/typography";
-@import "base/responsivity";
-
-// partials
-@import "partials/buttons";
-@import "partials/loader";
-@import "partials/header";
-@import "partials/draggable-zone";
-@import "partials/draggable-buttons";
-@import "partials/footer";
-@import "partials/modal";
+@import
+  "libs/lulu/lulu",
+  "base/responsive",
+  "components/loader",
+  "components/modals",
+  "components/buttons",
+  "components/smoke",
+  "components/panels",
+  "components/social-icons";

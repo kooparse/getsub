@@ -1,0 +1,12 @@
+@import
+  "lulu-custom",
+  "lulu-settings";
+
+// Background Colors
+// -----------------------------------------------------------------------------
+
+@each $color-name, $color-value in $colors {
+  .bg-#{$color-name} {
+    background-color: $color-value;
+  }
+}

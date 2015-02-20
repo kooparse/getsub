@@ -5,6 +5,7 @@ var gulp        = require('gulp'),
     uglify      = require('gulp-uglify'),
     runSequence = require('run-sequence'),
     sourcemaps  = require('gulp-sourcemaps'),
+    autoprefixer = require('gulp-autoprefixer'),
     nodemon     = require('gulp-nodemon'),
     browserify  = require('browserify'),
     reactify    = require('reactify'),
@@ -34,10 +35,12 @@ gulp.task('dev-js', function () {
 gulp.task('dev-css', function () {
   return gulp.src('./app/public/stylesheets/sass/main.scss')
           .pipe(sourcemaps.init())
-          .pipe(sass({
-            outputStyle: 'compressed'
-          }))
+          .pipe(sass())
           .pipe(sourcemaps.write())
+          .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+          }))
           .pipe(gulp.dest('./app/public/stylesheets/'));
 });
 
@@ -85,7 +88,13 @@ gulp.task('build-js', function () {
 gulp.task('build-css', function () {
   return gulp.src('./app/public/stylesheets/sass/main.scss')
       .pipe(sourcemaps.init())
-      .pipe(sass())
+      .pipe(sass({
+        outputStyle: 'compressed'
+      }))
+      .pipe(autoprefixer({
+        browsers: ['last 2 versions'],
+        cascade: false
+      }))
       .pipe(gulp.dest('./build/public/stylesheets/'));
 });
 

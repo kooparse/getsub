@@ -16,17 +16,16 @@ var Component = React.createClass({
   },
 
   componentWillMount: function () {
-    Event.on('langChanged', this.onHandleLang);
+    Event.on('langSelected', this.onHandleLang);
     Event.on('dropFile', this.onHandleDrop);
   },
 
   componentWillUnmount: function() {
-    Event.removeListener('langChanged');
+    Event.removeListener('langSelected');
     Event.removeListener('dropFile');
   },
 
   onHandleDrop: function (fileName) {
-    console.log('fileName', fileName);
     this.getSubtitle(fileName);
   },
 
@@ -55,7 +54,7 @@ var Component = React.createClass({
 
     getsub.getUrl(dataForm, function (err, url) {
       Event.emit('urlRequested');
-      
+
       if (err)
         Event.emit('failure');
       else
@@ -71,14 +70,20 @@ var Component = React.createClass({
   render: function () {
 
     return (
-      <div className="wrapper">
-        <i className="fa fa-cloud-upload"></i>
-        <p>Drag &amp; drop your TV show or movie here!</p>
-        <span>OR</span>
-        <button className="upload-button" onClick={this.hackyFileTrigger}>
-          Upload File
-          <input id="upload-files" className="upload-button" type="file" value="" onChange={this.onChangeEvent} ref="uploadFile"/>
-        </button>
+      <div className="flex flex-1 flex-col col-12 mxa">
+        <div className="flex-1">
+          <i className="fa fa-cloud-upload icon-big dark-grey"></i>
+        </div>
+        <div className="flex-1 m1">
+          <p className="dark-mid-grey mt0 mb0">Drag &amp; drop your TV show or movie here!</p>
+          <span className="dark-mid-grey">OR</span>
+        </div>
+        <div className="flex-1">
+          <button className="btn-flat dark half-circle col-3" onClick={this.hackyFileTrigger}>
+            Upload File
+            <input id="upload-files" className="hide" type="file" value="" onChange={this.onChangeEvent} ref="uploadFile"/>
+          </button>
+        </div>
       </div>
     )
 

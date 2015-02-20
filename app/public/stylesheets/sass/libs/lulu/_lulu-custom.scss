@@ -1,0 +1,123 @@
+
+@for $i from 1 through 10 {
+  .flex-#{$i} { flex: $i; }
+}
+
+.light { font-weight: 300; }
+
+.flex-just-start  { justify-content: flex-start; }
+.flex-just-center { justify-content: center; }
+.flex-just-around { justify-content: space-around; }
+.flex-just-end    { justify-content: flex-end; }
+
+.flex-align-start  { align-items: flex-start; }
+.flex-align-center  { align-items: center; }
+.flex-align-end  { align-items: flex-end; }
+.flex-align-stretch  { align-items: stretch; }
+
+
+.full { height: 100vh; }
+.dashed { border: .3rem dashed }
+.sh-inner {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), inset 0 0 .25em 0 rgba(0, 0, 0, 0.25);
+}
+
+.tr-1 { transition: all .3s; }
+.tr-2 { transition: all .5s; }
+.tr-3 { transition: all .9s; }
+
+.text-reset:hover {
+  text-decoration: none;
+}
+
+.small {
+  font-size: .9em;
+}
+
+.icon-big {
+  font-size: 6em;
+}
+
+.half-circle {
+  border-radius: 40px;
+}
+
+.absolute-center {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: table;
+}
+
+// -----------------------------------------------------------------------------
+// -----------------------------------------------------------------------------
+// VARIABLE OVERIDED
+$h1            : 4rem;
+// -----------------------------------------------------------------------------
+
+
+// Colors
+// -----------------------------------------------------------------------------
+
+$getsub-red     : #E26A6A; //custom
+$getsub-blue    : #00ACEE; //custom
+$dark-grey      : #304650; //custom
+$dark-mid-grey  : #667680; //custom
+$dark-ghost-grey: rgba(0,0,0, .0625); //custom
+$blue-flash     : #0089ff; //custom
+$grey-dark      : #212121;
+$amber          : #ffca28;
+$black          : #000000;
+$blue           : #42a5f5;
+$blue-light     : #29b6f6;
+$cyan           : #26c6da;
+$green          : #66bb6a;
+$green-light    : #9ccc65;
+$grey           : rgba($grey-dark, .5);
+$grey-light     : #7e7e7e; //custom
+$grey-lighter   : rgba($grey-dark, .10);
+$indigo         : #5c6bc0;
+$lime           : #d4e157;
+$orange         : #ffa726;
+$orange-deep    : #ff7043;
+$pink           : #ec407a;
+$purple         : #ab47bc;
+$purple-deep    : #7e57c2;
+$red            : #ef5350;
+$teal           : #26a69a;
+$white          : #ffffff;
+$yellow         : #ffee58;
+
+// This list is used to automatically create text, background and border colors
+$colors: (
+  "getsub-red"     : $getsub-red,
+  "getsub-blue"    : $getsub-blue,
+  "dark-mid-grey"    : $dark-mid-grey,
+  "dark-ghost-grey"  : $dark-ghost-grey,
+  "blue-flash"     : $blue-flash,
+  "dark-grey"      : $dark-grey,
+  "amber"          : $amber,
+  "black"          : $black,
+  "blue"           : $blue,
+  "blue-light"     : $blue-light,
+  "cyan"           : $cyan,
+  "green"          : $green,
+  "green-light"    : $green-light,
+  "grey"           : $grey,
+  "grey-dark"      : $grey-dark,
+  "grey-light"     : $grey-light,
+  "grey-lighter"   : $grey-lighter,
+  "indigo"         : $indigo,
+  "lime"           : $lime,
+  "orange"         : $orange,
+  "orange-deep"    : $orange-deep,
+  "pink"           : $pink,
+  "purple"         : $purple,
+  "purple-deep"    : $purple-deep,
+  "red"            : $red,
+  "teal"           : $teal,
+  "white"          : $white,
+  "yellow"         : $yellow
+);

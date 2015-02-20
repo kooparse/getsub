@@ -1,0 +1,104 @@
+// Spacing
+// -----------------------------------------------------------------------------
+
+$space-0: 0     !default;
+$space-1: .5rem !default;
+$space-2: 1rem  !default;
+$space-3: 2rem  !default;
+$space-4: 3rem  !default;
+
+
+// Colors
+// -----------------------------------------------------------------------------
+
+$grey-dark    : #212121 !default;
+
+$amber        : #ffca28 !default;
+$black        : #000    !default;
+$blue         : #42a5f5 !default;
+$blue-light   : #29b6f6 !default;
+$cyan         : #26c6da !default;
+$green        : #66bb6a !default;
+$green-light  : #9ccc65 !default;
+$grey         : rgba($grey-dark, .5)  !default;
+$grey-light   : rgba($grey-dark, .25) !default;
+$grey-lighter : rgba($grey-dark, .10) !default;
+$indigo       : #5c6bc0 !default;
+$lime         : #d4e157 !default;
+$orange       : #ffa726 !default;
+$orange-deep  : #ff7043 !default;
+$pink         : #ec407a !default;
+$purple       : #ab47bc !default;
+$purple-deep  : #7e57c2 !default;
+$red          : #ef5350 !default;
+$teal         : #26a69a !default;
+$white        : #fff    !default;
+$yellow       : #ffee58 !default;
+
+// This list is used to automatically create text, background and border colors
+$colors: (
+  "amber"        : $amber,
+  "black"        : $black,
+  "blue"         : $blue,
+  "blue-light"   : $blue-light,
+  "cyan"         : $cyan,
+  "green"        : $green,
+  "green-light"  : $green-light,
+  "grey"         : $grey,
+  "grey-dark"    : $grey-dark,
+  "grey-light"   : $grey-light,
+  "grey-lighter" : $grey-lighter,
+  "indigo"       : $indigo,
+  "lime"         : $lime,
+  "orange"       : $orange,
+  "orange-deep"  : $orange-deep,
+  "pink"         : $pink,
+  "purple"       : $purple,
+  "purple-deep"  : $purple-deep,
+  "red"          : $red,
+  "teal"         : $teal,
+  "white"        : $white,
+  "yellow"       : $yellow
+) !default;
+
+$hr-color: $grey-light !default;
+$body-bg: $white !default;
+
+// Typography
+// -----------------------------------------------------------------------------
+
+$font-family           : "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-monospace : Menlo, Consolas, "Courier New", monospace !default;
+$font-size             : 100% !default;
+$line-height           : 1.5 !default;
+$font-weight-bold      : bold !default;
+$text-color            : $grey-dark !default;
+$heading-font-family   : $font-family !default;
+$heading-line-height   : 1.25 !default;
+$heading-font-weight   : bold !default;
+$heading-color         : $grey-dark !default;
+$h1: 2rem !default;
+$h2: 1.5rem !default;
+$h3: 1.25rem !default;
+$h4: 1rem !default;
+$h5: .875rem !default;
+$h6: .75rem !default;
+$font-size-xl: 3rem !default;
+$font-size-xxl: 4rem !default;
+$font-size-xxxl: 5rem !default;
+$link-color: $indigo !default;
+
+$kerning-1: 2px !default;
+$kerning-2: 4px !default;
+$kerning-3: 6px !default;
+$kerning-4: 8px !default;
+
+$border-radius: 4px !default;
+$border-width: 2px !default;
+
+// Breakpoints
+// -----------------------------------------------------------------------------
+
+$breakpoint-small  : "(max-width: 48rem)" !default;
+$breakpoint-medium : "(min-width: 48.0625rem)" !default;
+$breakpoint-large  : "(min-width: 64rem)" !default;

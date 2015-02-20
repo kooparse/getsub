@@ -6,15 +6,44 @@
 Getsub is a lightweight webapp which enables you to download your movie or TV show subtitle with only a **drag & drop**, awesome eh?!
 
 ## Current languages
+
+ - Afrikaans
+ - Indonesian
+ - Afrikaans
+ - Catalan
+ - Danish
+ - German
  - English
+ - Spanish
+ - Greek
  - French
  - Italian
- - Spanish
- - German
+ - Hungarian
+ - Dutch
+ - Norwegian
+ - Polish
+ - Portuguese
+ - Finnish
+ - Swedish
+ - Turkish
+ - Icelandic
+ - Czech
+ - Russian
+ - Thai
+ - Hebrew
+ - Arabic
+ - Chinese
+ - Japanese
+ - Korean
 
-## TODO:
-- optimize the research for movies subtitles
-- fix addic7ed...
+
+## Install && Running
+### Unix and OS/X
+- Fork or download this repository.
+- `cd` to the project's location
+- run `npm install`
+- Make sure MongoDB is running and reachable as configured in `api/config/db_conf.js`.
+- run `gulp`
 
 ## Contact
 Alexandre Chêne: alexandre.enehc@gmail.com

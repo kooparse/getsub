@@ -1,0 +1,68 @@
+@import
+  "lulu-custom",
+  "lulu-settings",
+  "lulu-mixins";
+
+// Margins
+// -----------------------------------------------------------------------------
+
+.ma { margin: auto; }
+
+.mxa {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+@each $name, $space in (
+  "0": $space-0,
+  "1": $space-1,
+  "2": $space-2,
+  "3": $space-3,
+  "4": $space-4
+) {
+  @include margin-padding (
+    $property: "margin",
+    $shorthand: "m",
+    $name: $name,
+    $space: $space
+  );
+}
+
+
+// Negative Margins
+// -----------------------------------------------------------------------------
+
+@each $name, $space in (
+  "1": $space-1,
+  "2": $space-2,
+  "3": $space-3,
+  "4": $space-4
+) {
+  @include margin-padding (
+    $property: "margin",
+    $shorthand: "mn",
+    $name: $name,
+    $space: -$space
+  );
+}
+
+
+// Paddings
+// -----------------------------------------------------------------------------
+
+
+@each $name, $space in (
+  "0": $space-0,
+  "1": $space-1,
+  "2": $space-2,
+  "3": $space-3,
+  "4": $space-4
+) {
+  @include margin-padding (
+    $property: "padding",
+    $shorthand: "p",
+    $name: $name,
+    $space: $space
+  );
+}

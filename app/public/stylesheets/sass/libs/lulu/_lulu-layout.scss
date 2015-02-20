@@ -1,0 +1,66 @@
+@import
+  "lulu-custom",
+  "lulu-settings";
+
+// Display
+// -----------------------------------------------------------------------------
+
+.inline { display: inline; }
+.block  { display: block; }
+.inline-block { display: inline-block; }
+
+.hide { display: none; }
+.show { display: block; }
+
+.visible   { visibility: hidden; }
+.invisible { visibility: hidden; }
+
+@media #{$breakpoint-small} {
+  .hide-sm { display: none !important; }
+  .show-sm { display: block !important; }
+}
+
+@media #{$breakpoint-medium} {
+  .hide-md { display: none !important; }
+  .show-md { display: block !important; }
+}
+
+@media #{$breakpoint-large} {
+  .hide-lg { display: none !important; }
+  .show-lg { display: block !important; }
+}
+
+
+// Floats
+// -----------------------------------------------------------------------------
+
+.left  { float: left }
+.right { float: right }
+
+.clearfix {
+  &:before,
+  &:after {
+    content: "";
+    display: table
+  }
+
+  &:after { clear: both }
+}
+
+
+// Overflows
+// -----------------------------------------------------------------------------
+
+.scroll      { overflow: scroll; }
+.scroll-auto { overflow: auto; }
+
+.scroll-y { overflow-y: scroll; }
+.scroll-x { overflow-x: scroll; }
+
+
+// Widths
+// -----------------------------------------------------------------------------
+
+.w960  { width: 960px; }
+
+.fit  { max-width: 100%; }

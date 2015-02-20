@@ -1,0 +1,64 @@
+$paint-color:
+  #2ecc71,
+  #3498db,
+  #9b59b6,
+  #e67e22,
+  #c0392b,
+  #e74c3c,
+  #e74c8c;
+
+$items: item-1 item-2 item-3 item-4 item-5 item-6 item-7;
+
+$delay: -1s;
+
+
+.loader {
+  opacity: 0;
+  position: absolute;
+  top: 65%;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100px;
+  height: 39px;
+  transform: translateY(-50%);
+  transition: opacity 0.5s;
+  visibility: hidden;
+
+  span {
+    display: inline-block;
+    width: 10px;
+    height: 40px;
+
+    @for $i from 1 through 7 {
+      &.item-#{$i} {
+        background: nth($paint-color, $i);
+      }
+    }
+
+    animation-name: scale;
+    animation-duration: 1.2s;
+    animation-iteration-count: infinite;
+  }
+}
+
+.loader.show {
+ opacity: 1;
+ visibility: visible;
+}
+
+@each $i in $items {
+  .#{$i} {
+    $delay: $delay + 0.1;
+    animation-delay: $delay;
+  }
+}
+
+@keyframes scale {
+  0%, 40%, 100%{
+    transform: scaleY(0.2);
+  }
+  20%, 60%{
+    transform: scaleY(1);
+  }
+}

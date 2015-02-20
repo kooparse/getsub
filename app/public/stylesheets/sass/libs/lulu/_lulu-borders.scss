@@ -1,0 +1,52 @@
+@import
+  "lulu-custom",
+  "lulu-settings";
+
+// Borders
+// -----------------------------------------------------------------------------
+
+@for $i from 1 through 2 {
+  .bd#{$i} {
+    border-style: solid;
+    border-width: #{$i}px;
+  }
+
+  .bdt#{$i} {
+    border-top-style: solid;
+    border-top-width: #{$i}px;
+  }
+
+  .bdb#{$i} {
+    border-bottom-style: solid;
+    border-bottom-width: #{$i}px;
+  }
+
+  .bdl#{$i} {
+    border-left-style: solid;
+    border-left-width: #{$i}px;
+  }
+
+  .bdr#{$i} {
+    border-right-style: solid;
+    border-right-width: #{$i}px;
+  }
+}
+
+@each $color-name, $color-value in $colors {
+  .bd-#{$color-name} {
+    border-color: $color-value;
+  }
+}
+
+
+// Border Radii
+// -----------------------------------------------------------------------------
+
+.rounded        { border-radius: $border-radius; }
+.rounded-top    { border-radius: $border-radius $border-radius 0 0; }
+.rounded-bottom { border-radius: 0 0 $border-radius $border-radius; }
+.rounded-left   { border-radius: $border-radius 0 0 $border-radius; }
+.rounded-right  { border-radius: 0 $border-radius $border-radius 0; }
+
+.circle      { border-radius: 50%; }
+.not-rounded { border-radius: 0; }

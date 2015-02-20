@@ -17,7 +17,7 @@ if (process.env.NODE_ENV && process.env.NODE_ENV !== 'prod') {
 else {
   app.use("/js/bundle.js", express.static(__dirname + '/build/js/bundle.js'));
   app.use("/public", express.static(__dirname + '/build/public'));
-  app.use("/robots.txt", express.static(__dirname + '/app/public/Robots.txt'));
+  app.use("/robots.txt", express.static(__dirname + '/app/public/robots.txt'));
 }
 
 
@@ -28,7 +28,7 @@ app.get('/api/v1/getcount', require('./api/controllers/sub_controller')._getCoun
 
 app.use(function (req, res, next) {
 
-  if (req.originalUrl === '/Robots.txt')
+  if (req.originalUrl === '/robots.txt')
     return next();
 
   res.sendFile(__dirname + '/app/index.html');

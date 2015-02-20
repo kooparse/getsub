@@ -1,0 +1,83 @@
+@import
+  "lulu-custom",
+  "lulu-settings",
+  "lulu-mixins";
+
+// Headings
+// -----------------------------------------------------------------------------
+
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  @include headings();
+}
+
+@each $header, $size in (
+  "h1": $h1,
+  "h2": $h2,
+  "h3": $h3,
+  "h4": $h4,
+  "h5": $h5,
+  "h6": $h6
+) {
+  .#{$header} {
+    font-size: $size;
+  }
+}
+
+
+// Lists
+// -----------------------------------------------------------------------------
+
+.list-reset {
+  padding-left: 0;
+  list-style: none;
+}
+
+// Utilities
+// -----------------------------------------------------------------------------
+
+.bold   { font-weight: bold; }
+.italic { font-style: italic; }
+.normal { font-weight: normal; }
+
+.center  { text-align: center; }
+.justify { text-align: justify; }
+.left-align  { text-align: left; }
+.right-align { text-align: right; }
+
+.caps { text-transform: capitalize; }
+.lowercase { text-transform: lowercase; }
+.uppercase { text-transform: uppercase; }
+
+.nowrap { white-space: nowrap; }
+.break-word { word-wrap: break-word; }
+
+.xl   { font-size: $font-size-xl; }
+.xxl  { font-size: $font-size-xxl; }
+.xxxl { font-size: $font-size-xxxl; }
+
+.strikethrough { text-decoration: line-through; }
+
+.k1 { letter-spacing: $kerning-1; }
+.k2 { letter-spacing: $kerning-2; }
+.k3 { letter-spacing: $kerning-3; }
+.k4 { letter-spacing: $kerning-4; }
+
+.middle { vertical-align: middle; }
+
+
+// Mark
+// -----------------------------------------------------------------------------
+
+.mark {
+  @include mark();
+}
+
+
+// Text Colors
+// -----------------------------------------------------------------------------
+
+@each $color-name, $color-value in $colors {
+  .#{$color-name} {
+    color: $color-value;
+  }
+}

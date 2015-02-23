@@ -42,7 +42,7 @@ Getsub is a lightweight webapp which enables you to download your movie or TV sh
 - Fork or download this repository.
 - `cd` to the project's location
 - run `npm install`
-- Make sure MongoDB is running and reachable as configured in `api/config/db_conf.js`.
+- Make sure MongoDB is running and reachable as configured in `api/config/db.js`.
 - run `gulp`
 
 ## Contact

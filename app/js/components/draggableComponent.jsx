@@ -80,7 +80,7 @@ var Component = React.createClass({
         </div>
         <div className="flex-1">
           <button className="btn-flat dark half-circle col-3" onClick={this.hackyFileTrigger}>
-            Upload File
+            Select File
             <input id="upload-files" className="hide" type="file" value="" onChange={this.onChangeEvent} ref="uploadFile"/>
           </button>
         </div>
@@ -90,6 +90,5 @@ var Component = React.createClass({
   }
 
 });
-
 
 module.exports = Component;

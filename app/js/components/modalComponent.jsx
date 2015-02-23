@@ -13,16 +13,14 @@ var Component = React.createClass({
   },
 
   eventListener: function (newState) {
-    var that = this;
-
     if (newState)
       Event.emit('smoke', true);
 
     this.setState({ state: newState });
 
-    setTimeout(function () {
-      if (that.state.state)
-        that.onHandleClose();
+    setTimeout(() => {
+      if (this.state.state)
+        this.onClose();
     }, 5000);
   },
 

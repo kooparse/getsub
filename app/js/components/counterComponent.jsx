@@ -10,11 +10,9 @@ var Component = React.createClass({
   },
 
   componentWillMount: function () {
-    var that = this;
-
-    getsub.getCount(function (err, newCount) {
+    getsub.getCount((err, newCount) => {
       if (!err)
-        that.setState({ counter: newCount });
+        this.setState({ counter: newCount });
     });
   },
 
@@ -28,6 +26,8 @@ var Component = React.createClass({
     );
 
   }
+
 });
+
 
 module.exports = Component;

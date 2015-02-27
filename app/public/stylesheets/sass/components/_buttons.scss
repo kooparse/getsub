@@ -5,8 +5,8 @@
   font-size: 0.7rem;
   letter-spacing: 1px;
   font-weight: 700;
-  transition: all 0.3s;
   cursor: pointer;
+  max-width: 250px;
 }
 
 
@@ -27,4 +27,13 @@
 .btn-flat.light:hover {
   background-color: $white;
   color: $dark-grey;
+}
+
+.lg-custom--light {
+  color: $dark-mid-grey;
+}
+
+.btn-flat.dark:hover .lg-custom,
+.btn-flat.dark:hover .lg-custom--light {
+  color: $white;
 }

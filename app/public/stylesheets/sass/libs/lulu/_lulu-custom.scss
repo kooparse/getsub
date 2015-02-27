@@ -1,3 +1,6 @@
+body {
+  -webkit-font-smoothing: antialiased;
+}
 
 @for $i from 1 through 10 {
   .flex-#{$i} { flex: $i; }

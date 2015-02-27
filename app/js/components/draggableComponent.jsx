@@ -79,7 +79,7 @@ var Component = React.createClass({
           <span className="dark-mid-grey">OR</span>
         </div>
         <div className="flex-1">
-          <button className="btn-flat dark half-circle col-3" onClick={this.hackyFileTrigger}>
+          <button className="btn-flat dark half-circle col-3 tr-1" onClick={this.hackyFileTrigger}>
             Select File
             <input id="upload-files" className="hide" type="file" value="" onChange={this.onChangeEvent} ref="uploadFile"/>
           </button>

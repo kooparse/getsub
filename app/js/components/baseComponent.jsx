@@ -14,13 +14,24 @@ var React               = require('react/addons'),
 var Component = React.createClass({
 
   getInitialState: function () {
-    return { hide: false }
+
+    var initLang = 'eng';
+
+    if (!!window.localStorage.getItem('lang'))
+      initLang = JSON.parse(window.localStorage.getItem('lang')).lang;
+
+    return { hide: false, lang: initLang }
   },
 
   componentWillMount: function () {
+    Event.on('langSelected',  this.onHandleLang);
     Event.on('urlRequesting', this.onLoading);
     Event.on('urlRequested',  this.onLoaded);
     Event.on('failure',       this.onHandleFailure);
+  },
+
+  onHandleLang: function (newLang) {
+    this.setState({ lang: newLang });
   },
 
   onLoading: function () {
@@ -94,8 +105,9 @@ var Component = React.createClass({
           </header>
 
           <section className="flex flex-align-center flex-just-center flex-2 mxa col-4">
-            <button className="rounded btn-flat dark col-10" onClick={this.handleClick}>
-              Select your language
+            <button className="rounded btn-flat dark col-10 tr-1" onClick={this.handleClick}>
+              <span className="left ml2 lg-custom">Select your language</span>
+              <span className="right mr2 lg-custom--light">[{this.state.lang}]</span>
             </button>
           </section>
 

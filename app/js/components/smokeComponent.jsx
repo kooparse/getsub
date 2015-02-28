@@ -19,7 +19,8 @@ var Component = React.createClass({
   onClose: function () {
     this.eventListener(false);
     Event.emit('panel', false);
-    Event.emit('modal', false);
+    Event.emit('404Modal', false);
+    Event.emit('selectSubModal', false);
   },
 
   render: function () {

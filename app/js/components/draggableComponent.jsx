@@ -7,12 +7,13 @@ var Component = React.createClass({
 
   getInitialState: function () {
 
-    var initLang = 'eng';
+    var initLang      = 'eng';
 
     if (!!window.localStorage.getItem('lang'))
       initLang = JSON.parse(window.localStorage.getItem('lang')).lang;
 
-    return { lang: initLang }
+    return { lang: initLang };
+
   },
 
   componentWillMount: function () {
@@ -34,14 +35,12 @@ var Component = React.createClass({
   },
 
   onChangeEvent: function (e) {
-
     var fileName = this.refs.uploadFile.getDOMNode().files[0].name;
 
     this.getSubtitle(fileName);
 
     e.stopPropagation();
     e.preventDefault();
-
   },
 
   getSubtitle: function (fileName) {
@@ -49,16 +48,20 @@ var Component = React.createClass({
 
     var dataForm = {
       fileName  : fileName,
-      lang      : this.state.lang
+      lang      : this.state.lang,
+      auto      : this.state.checkbox
     };
 
-    getsub.getUrl(dataForm, function (err, url) {
+    getsub.getUrl(dataForm, function (err, result) {
       Event.emit('urlRequested');
 
       if (err)
-        Event.emit('failure');
+        return Event.emit('failure');
+
+      if (result.auto)
+        window.location = result.subList[0].subDownloadLink;
       else
-        window.location = url;
+        Event.emit('selectSubModal', true, result.subList);
     });
 
   },
@@ -81,11 +84,11 @@ var Component = React.createClass({
         <div className="flex-1">
           <button className="btn-flat dark half-circle col-3 tr-1" onClick={this.hackyFileTrigger}>
             Select File
-            <input id="upload-files" className="hide" type="file" value="" onChange={this.onChangeEvent} ref="uploadFile"/>
+            <input id="upload-files" className="hide" value="" type="file" onChange={this.onChangeEvent} ref="uploadFile"/>
           </button>
         </div>
       </div>
-    )
+    );
 
   }
 

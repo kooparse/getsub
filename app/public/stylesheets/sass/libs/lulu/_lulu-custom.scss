@@ -18,6 +18,7 @@ body {
 .flex-align-end  { align-items: flex-end; }
 .flex-align-stretch  { align-items: stretch; }
 
+.flex-self-end { align-self: flex-end; }
 
 .full { height: 100vh; }
 .dashed { border: .3rem dashed }
@@ -43,6 +44,17 @@ body {
 
 .half-circle {
   border-radius: 40px;
+}
+
+.cursor { cursor: pointer; }
+
+.hide--smooth {
+  opacity: 0;
+  visibility: hidden;
+}
+.show--smooth {
+  opacity: 1;
+  visibility: visible;
 }
 
 .absolute-center {

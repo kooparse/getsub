@@ -1,9 +1,12 @@
-var opensubtitles = require('opensubtitles-client');
+var opensubtitles = require('opensubtitles-client'),
+    _             = require('underscore');
 
 
-exports.getUrl = function (fileName, lang, callback) {
+exports.getUrl = function (fileName, lang, auto, callback) {
 
-  var loggedToken;
+  var loggedToken,
+      resultSub,
+      length;
 
   opensubtitles.api.login()
     .done(function (token) {
@@ -13,20 +16,47 @@ exports.getUrl = function (fileName, lang, callback) {
           .done(function (results) {
                 opensubtitles.api.logout(token);
 
-                if (!results || !results[0]) {
-                  return callback(true, null)
+                if (!results || !results[0])
+                  return callback(true, null);
+
+
+                if (!auto) {
+                  resultSub =  _.map(results, function (result) {
+
+                    length = result.SubDownloadLink.length - 3
+
+                    return {
+                      subFileName       : result.SubFileName,
+                      subAddDate        : result.SubAddDate,
+                      subDownloadLink   : result.SubDownloadLink.substring(0, length)
+                    }
+                  });
+
+                  resultObj = {
+                    queryFileName     : fileName,
+                    languageName      : lang,
+                    provider          : 'opensubtitle',
+                    auto              : false,
+                    subList           : resultSub
+                  };
                 }
 
-                var subLink = results[0].SubDownloadLink,
-                    length  = subLink.length - 3;
+                else {
+                  resultSub = results[0].SubDownloadLink,
+                  length  = resultSub.length - 3;
 
-                var resultObj = {
-                  queryFileName   : fileName,
-                  languageName    : lang,
-                  provider        : 'opensubtitle',
-                  subAddDate      : results[0].SubAddDate,
-                  subFileName     : results[0].SubFileName,
-                  subDownloadLink : subLink.substring(0, length)
+                  resultObj = {
+                    queryFileName     : fileName,
+                    languageName      : lang,
+                    provider          : 'opensubtitle',
+                    auto              : true,
+                    subList           : [{
+                      subFileName       : results[0].SubFileName,
+                      subAddDate        : results[0].SubAddDate,
+                      subDownloadLink   : resultSub.substring(0, length)
+                    }]
+                  };
+
                 }
 
                 callback(null, resultObj);

@@ -5,11 +5,11 @@ var React = require('react/addons'),
 var Component = React.createClass({
 
   getInitialState: function () {
-    return { state: false }
+    return { state: false };
   },
 
   componentWillMount: function () {
-    Event.on('modal', this.eventListener);
+    Event.on('404Modal', this.eventListener);
   },
 
   eventListener: function (newState) {
@@ -52,10 +52,10 @@ var Component = React.createClass({
             <button className="rounded flex-1 mxa mt1 mb1 btn-flat light col-6" onClick={this.onClose}>Close me!</button>
         </div>
       </div>
-    )
+    );
   }
 
-})
+});
 
 
 module.exports = Component;

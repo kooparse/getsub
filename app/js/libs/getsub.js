@@ -8,7 +8,7 @@ module.exports = {
       if (res.status !== 200)
         callback(true, null);
       else
-        callback(null, JSON.parse(res.text).downloadUrl);
+        callback(null, JSON.parse(res.text));
     });
   },
 

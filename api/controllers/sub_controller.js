@@ -5,12 +5,13 @@ var getsub      = require('../libs/getsub'),
 exports._post = function (req, res) {
 
   var fileName = req.body.fileName,
-      lang     = req.body.lang;
+      lang     = req.body.lang,
+      auto     = req.body.auto;
 
   if (!fileName || !lang)
     return res.sendStatus(500);
 
-  getsub.getUrl(fileName, lang, function (err, resultObj) {
+  getsub.getUrl(fileName, lang, auto, function (err, resultObj) {
 
     if (err)
       return res.sendStatus(404);
@@ -20,13 +21,12 @@ exports._post = function (req, res) {
     sub.queryFileName   = resultObj.queryFileName;
     sub.languageName    = resultObj.languageName;
     sub.provider        = resultObj.provider;
-    sub.subAddDate      = resultObj.subAddDate;
-    sub.subFileName     = resultObj.subFileName;
-    sub.subDownloadLink = resultObj.subDownloadLink;
+    sub.auto            = resultObj.auto;
+    sub.subList         = resultObj.subList;
 
     sub.save();
 
-    res.json({ downloadUrl: resultObj.subDownloadLink });
+    res.json({ auto: resultObj.auto, subList: resultObj.subList });
   });
 
 };

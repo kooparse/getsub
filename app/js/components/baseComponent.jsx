@@ -1,13 +1,14 @@
-var React               = require('react/addons'),
-    CX                  = React.addons.classSet,
+var React                   = require('react/addons'),
+    CX                      = React.addons.classSet,
 
-    DraggableComponent  = require('./draggableComponent.jsx'),
-    SmokeComponent      = require('./smokeComponent.jsx'),
-    ModalComponent      = require('./modalComponent.jsx'),
-    MobileComponent     = require('./mobileComponent.jsx'),
-    LoaderComponent     = require('./loaderComponent.jsx'),
-    PanelComponent      = require('./panelComponent.jsx'),
-    CounterComponent    = require('./counterComponent.jsx');
+    DraggableComponent      = require('./draggableComponent.jsx'),
+    SmokeComponent          = require('./smokeComponent.jsx'),
+    FailModalComponent      = require('./modals/failModalComponent.jsx'),
+    SelectSubModalComponent = require('./modals/selectSubModalComponent.jsx'),
+    MobileComponent         = require('./mobileComponent.jsx'),
+    LoaderComponent         = require('./loaderComponent.jsx'),
+    PanelComponent          = require('./panelComponent.jsx'),
+    CounterComponent      = require('./counterComponent.jsx');
 
 
 
@@ -15,12 +16,13 @@ var Component = React.createClass({
 
   getInitialState: function () {
 
-    var initLang = 'eng';
+    var initLang      = 'eng';
 
     if (!!window.localStorage.getItem('lang'))
       initLang = JSON.parse(window.localStorage.getItem('lang')).lang;
 
-    return { hide: false, lang: initLang }
+    return { hide: false, lang: initLang, checkbox: true }
+
   },
 
   componentWillMount: function () {
@@ -45,7 +47,7 @@ var Component = React.createClass({
   },
 
   onHandleFailure: function () {
-    Event.emit('modal', true);
+    Event.emit('404Modal', true);
   },
 
   onHandleDrop: function (e) {
@@ -79,6 +81,12 @@ var Component = React.createClass({
     e.preventDefault();
   },
 
+  handleCheckBoxChange: function (e) {
+    localStorage.setItem('checkbox', e.target.checked);
+    this.setState({ checkbox: e.target.checked });
+    e.stopPropagation();
+  },
+
   handleClick: function (e) {
     Event.emit('panel', true);
 
@@ -89,9 +97,19 @@ var Component = React.createClass({
   render: function () {
 
     var placeholderClasses = CX({
-      'flex-1': true,
-      'tr-1'  : true,
-      'hide'  : this.state.hide
+      'flex'                : true,
+      'flex-just-center'    : true,
+      'flex-align-center'   : true,
+      'flex-10'             : true,
+      'tr-1'                : true,
+      'hide--smooth'        : this.state.hide
+    });
+
+    var checkboxClasses = CX({
+      'flex-1'          : true,
+      'flex-self-end'   : true,
+      'tr-1'            : true,
+      'hide--smooth'    : this.state.hide
     });
 
     return (
@@ -111,7 +129,13 @@ var Component = React.createClass({
             </button>
           </section>
 
-          <div className="flex flex-7 flex-align-center flex-just-center center mt1 mb3 col-8 mxa dashed sh-inner dark-mid-grey" onDrop={this.onHandleDrop} onDragLeave={this.onHandleDragLeave} onDragOver={this.onHandleDragOver}>
+          <div className="flex flex-7 flex-col center mt1 mb3 col-8 mxa dashed sh-inner dark-mid-grey" onDrop={this.onHandleDrop} onDragLeave={this.onHandleDragLeave} onDragOver={this.onHandleDragOver}>
+            <div className={checkboxClasses}>
+              <div className="mr1">
+                <span>auto </span>
+                <input type="checkbox" name="auto" className="cursor" checked={this.state.checkbox} onChange={this.handleCheckBoxChange}/>
+              </div>
+            </div>
             <div className={placeholderClasses}>
               <DraggableComponent />
             </div>
@@ -136,10 +160,11 @@ var Component = React.createClass({
           </footer>
         </div>
 
-        <ModalComponent />
         <SmokeComponent />
         <PanelComponent />
         <MobileComponent />
+        <FailModalComponent />
+        <SelectSubModalComponent />
       </div>
     );
   }

@@ -1,12 +1,10 @@
-var React = require('react'),
-    Event = require('events').EventEmitter,
-    BaseComponent = require('../components/baseComponent.jsx');
+import React from 'react';
+import {EventEmitter as Event} from 'events';
+import BaseComponent from '../components/baseComponent.jsx';
 
 
 
-
-
-module.exports = {
+export default {
 
   init: function () {
     window.Event = new Event();

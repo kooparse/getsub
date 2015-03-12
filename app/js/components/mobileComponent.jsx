@@ -1,9 +1,8 @@
-var React = require('react');
+import React from 'react';
 
 
 
-
-var Component = React.createClass({
+let Component = React.createClass({
 
   render: function () {
     return (
@@ -17,4 +16,4 @@ var Component = React.createClass({
 
 });
 
-module.exports = Component;
+export default Component;

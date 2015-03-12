@@ -1,7 +1,8 @@
-var React = require('react/addons'),
-    CX    = React.addons.classSet;
+import React from 'react/addons';
 
-var LangGroup = React.createClass({
+let CX = React.addons.classSet;
+
+let LangGroup = React.createClass({
 
   renderItem: function (button, index) {
     return (
@@ -28,11 +29,11 @@ var LangGroup = React.createClass({
 
 
 
-var Component = React.createClass({
+let Component = React.createClass({
 
   getInitialState: function() {
 
-    var initIndex = 5;
+    let initIndex = 5;
 
     if (!!window.localStorage.getItem('lang'))
       initIndex = JSON.parse(window.localStorage.getItem('lang')).index;
@@ -52,7 +53,7 @@ var Component = React.createClass({
   },
 
   handleChange: function(index) {
-    var lang = this.refs.buttonList.props.children[index].key;
+    let lang = this.refs.buttonList.props.children[index].key;
     this.setState({selected: index});
     this.setState({show: false});
     Event.emit('smoke', false);
@@ -62,7 +63,7 @@ var Component = React.createClass({
 
   render: function () {
 
-    var panelClasses = CX({
+    let panelClasses = CX({
       'panel'         : true,
       'fixed'         : true,
       'bg-dark-grey'  : true,
@@ -70,7 +71,7 @@ var Component = React.createClass({
       'show'          : this.state.show
     });
 
-    var panelStyle = {
+    let panelStyle = {
       'minWidth': '200px'
     };
 
@@ -200,4 +201,4 @@ var Component = React.createClass({
 });
 
 
-module.exports = Component;
+export default Component;

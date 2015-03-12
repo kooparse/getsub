@@ -1,13 +1,12 @@
-var React         = require('react'),
-    getsub        = require('../libs/getsub.js');
+import React from 'react';
+import getsub from '../libs/getsub.js';
 
 
-
-var Component = React.createClass({
+let Component = React.createClass({
 
   getInitialState: function () {
 
-    var initLang      = 'eng';
+    let initLang      = 'eng';
 
     if (!!window.localStorage.getItem('lang'))
       initLang = JSON.parse(window.localStorage.getItem('lang')).lang;
@@ -35,7 +34,7 @@ var Component = React.createClass({
   },
 
   onChangeEvent: function (e) {
-    var fileName = this.refs.uploadFile.getDOMNode().files[0].name;
+    let fileName = this.refs.uploadFile.getDOMNode().files[0].name;
 
     this.getSubtitle(fileName);
 
@@ -46,10 +45,10 @@ var Component = React.createClass({
   getSubtitle: function (fileName) {
     Event.emit('urlRequesting');
 
-    var dataForm = {
+    let dataForm = {
       fileName  : fileName,
       lang      : this.state.lang,
-      auto      : this.state.checkbox
+      auto      : this.props.checkbox
     };
 
     getsub.getUrl(dataForm, function (err, result) {
@@ -94,4 +93,5 @@ var Component = React.createClass({
 
 });
 
-module.exports = Component;
+
+export default Component;

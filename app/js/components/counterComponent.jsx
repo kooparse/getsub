@@ -1,9 +1,7 @@
-var React   = require('react'),
-    getsub  = require('../libs/getsub');
+import React from 'react';
+import getsub from '../libs/getsub'
 
-
-
-var Component = React.createClass({
+let Component = React.createClass({
 
   getInitialState: function () {
     return { counter: 0 }
@@ -30,4 +28,4 @@ var Component = React.createClass({
 });
 
 
-module.exports = Component;
+export default Component;

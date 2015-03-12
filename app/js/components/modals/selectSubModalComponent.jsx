@@ -1,8 +1,8 @@
-var _     = require('underscore'),
-    React = require('react/addons'),
-    CX    = React.addons.classSet;
+import React from 'react/addons';
+import _ from 'underscore';
+let CX    = React.addons.classSet;
 
-var Component = React.createClass({
+let Component = React.createClass({
 
   getInitialState: function () {
     return { state: false, list: [] };
@@ -38,7 +38,7 @@ var Component = React.createClass({
 
   render: function () {
 
-    var modalClasses = CX({
+    let modalClasses = CX({
       'modal': true,
       'flex': true,
       'flex-align-center': true,
@@ -70,4 +70,4 @@ var Component = React.createClass({
 });
 
 
-module.exports = Component;
+export default Component;

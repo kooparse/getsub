@@ -1,22 +1,21 @@
-var React                   = require('react/addons'),
-    CX                      = React.addons.classSet,
+import React from 'react/addons';
+import DraggableComponent from './draggableComponent.jsx';
+import SmokeComponent from './smokeComponent.jsx';
+import FailModalComponent from './modals/failModalComponent.jsx';
+import SelectSubModalComponent from './modals/selectSubModalComponent.jsx';
+import MobileComponent from './mobileComponent.jsx';
+import LoaderComponent from './loaderComponent.jsx';
+import PanelComponent from './panelComponent.jsx';
+import CounterComponent from './counterComponent.jsx';
 
-    DraggableComponent      = require('./draggableComponent.jsx'),
-    SmokeComponent          = require('./smokeComponent.jsx'),
-    FailModalComponent      = require('./modals/failModalComponent.jsx'),
-    SelectSubModalComponent = require('./modals/selectSubModalComponent.jsx'),
-    MobileComponent         = require('./mobileComponent.jsx'),
-    LoaderComponent         = require('./loaderComponent.jsx'),
-    PanelComponent          = require('./panelComponent.jsx'),
-    CounterComponent      = require('./counterComponent.jsx');
+let CX = React.addons.classSet;
 
 
-
-var Component = React.createClass({
+let Component = React.createClass({
 
   getInitialState: function () {
 
-    var initLang      = 'eng';
+    let initLang = 'eng';
 
     if (!!window.localStorage.getItem('lang'))
       initLang = JSON.parse(window.localStorage.getItem('lang')).lang;
@@ -51,7 +50,7 @@ var Component = React.createClass({
   },
 
   onHandleDrop: function (e) {
-    var files;
+    let files;
     if (e.dataTransfer) {
       files = e.dataTransfer.files;
     }
@@ -96,7 +95,7 @@ var Component = React.createClass({
 
   render: function () {
 
-    var placeholderClasses = CX({
+    let placeholderClasses = CX({
       'flex'                : true,
       'flex-just-center'    : true,
       'flex-align-center'   : true,
@@ -105,7 +104,7 @@ var Component = React.createClass({
       'hide--smooth'        : this.state.hide
     });
 
-    var checkboxClasses = CX({
+    let checkboxClasses = CX({
       'flex-1'          : true,
       'flex-self-end'   : true,
       'tr-1'            : true,
@@ -137,7 +136,7 @@ var Component = React.createClass({
               </div>
             </div>
             <div className={placeholderClasses}>
-              <DraggableComponent />
+              <DraggableComponent checkbox={this.state.checkbox}/>
             </div>
             <LoaderComponent />
           </div>
@@ -171,4 +170,4 @@ var Component = React.createClass({
 
 });
 
-module.exports = Component;
+export default Component;

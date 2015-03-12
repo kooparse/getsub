@@ -1,7 +1,6 @@
-var request = require('superagent');
+import request from 'superagent';
 
-
-module.exports = {
+export default {
 
   getUrl: function (dataForm, callback) {
     request.post('/api/v1/getsub', dataForm, function (err, res) {

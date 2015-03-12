@@ -1,8 +1,7 @@
-var React = require('react/addons'),
-    CX    = React.addons.classSet;
+import React from 'react/addons';
+let CX    = React.addons.classSet;
 
-
-var Component = React.createClass({
+let Component = React.createClass({
 
   getInitialState: function () {
     return { state: false }
@@ -25,7 +24,7 @@ var Component = React.createClass({
 
   render: function () {
 
-    var smokeClasses = CX({
+    let smokeClasses = CX({
       'smoke': true,
       'show': this.state.state
     });
@@ -37,5 +36,4 @@ var Component = React.createClass({
 
 })
 
-
-module.exports = Component;
+export default Component;

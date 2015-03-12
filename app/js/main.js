@@ -1,3 +1,3 @@
-var App = require('./application/app.jsx');
+import App from './application/app.jsx';
 
 App.init();

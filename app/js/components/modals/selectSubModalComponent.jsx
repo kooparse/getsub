@@ -56,7 +56,7 @@ let Component = React.createClass({
               <h3 className="white pt1 pr1 pb1 mt0 mb0">Select a subtitle:</h3>
             </div>
             <div className="flex-2 p1">
-              <ul className="p0 mb0">
+              <ul className="list p0 mb0 scroll-y">
               {this.state.list.map((sub, index) => {
                 return <li key={index} onClick={this.handleClick} data-link={sub.subDownloadLink} className="a--panel list-reset white p1 bd-dark-ghost-grey white">{sub.subFileName}</li>
               })}

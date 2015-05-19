@@ -7,10 +7,6 @@ $paint-color:
   #e74c3c,
   #e74c8c;
 
-$items: item-1 item-2 item-3 item-4 item-5 item-6 item-7;
-
-$delay: -1s;
-
 
 .loader {
   opacity: 0;
@@ -47,12 +43,29 @@ $delay: -1s;
  visibility: visible;
 }
 
-@each $i in $items {
-  .#{$i} {
-    $delay: $delay + 0.1;
-    animation-delay: $delay;
-  }
+
+.item-1 {
+ animation-delay: -0.9s;
 }
+.item-2 {
+ animation-delay: -0.8s;
+}
+.item-3 {
+ animation-delay: -0.7s;
+}
+.item-4 {
+ animation-delay: -0.6s;
+}
+.item-5 {
+ animation-delay: -0.5s;
+}
+.item-6 {
+ animation-delay: -0.4s;
+}
+.item-7 {
+ animation-delay: -0.3s;
+}
+
 
 @keyframes scale {
   0%, 40%, 100%{
